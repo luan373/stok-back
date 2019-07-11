@@ -12,13 +12,13 @@ public class Usuario extends AuditModel {
 
 	@Id
 	@GeneratedValue
-	public Long id;
+	private Long id;
 
 	@Column
-	public String usuario;
+	private String usuario;
 
 	@Column
-	public String senha;
+	private String senha;
 
 	public Long getId() {
 		return id;
