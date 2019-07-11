@@ -1,11 +1,14 @@
 package br.com.bg.stok.orm.service;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.google.common.hash.Hashing;
 
 import br.com.bg.stok.orm.model.Usuario;
 import br.com.bg.stok.orm.repository.UsuarioRepository;
@@ -44,6 +47,13 @@ public class UsuarioService {
 	@Transactional
 	public void deleteById(Long id) {
 		usuarioRepository.deleteById(id);
+	}
+
+	@Transactional(readOnly = true)
+	public Usuario porUsuarioSenha(Usuario usuario) {
+		usuario.setSenha(Hashing.sha256().hashString(usuario.getSenha(), StandardCharsets.UTF_8).toString());
+
+		return usuarioRepository.porUsuarioSenha(usuario.getUsuario(), usuario.getSenha());
 	}
 
 }

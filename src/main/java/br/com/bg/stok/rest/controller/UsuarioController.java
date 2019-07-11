@@ -38,6 +38,12 @@ public class UsuarioController {
 		return RestPreconditions.checkFound(usuarioService.findById(id));
 	}
 
+	@PostMapping("/porUsuarioSenha")
+	@ResponseStatus(HttpStatus.OK)
+	public Usuario porUsuarioSenha(@RequestBody Usuario resource) {
+		return usuarioService.porUsuarioSenha(resource);
+	}
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Long create(@RequestBody Usuario resource) {
