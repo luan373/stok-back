@@ -1,7 +1,6 @@
 package br.com.bg.stok.orm.service;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,8 @@ public class UsuarioService {
 
 	@Transactional
 	public void update(Usuario usuario) {
+		usuario.setSenha(Hashing.sha256().hashString(usuario.getSenha(), StandardCharsets.UTF_8).toString());
+
 		usuarioRepository.save(usuario);
 	}
 
@@ -35,12 +36,8 @@ public class UsuarioService {
 	}
 
 	@Transactional
-	public void addAll(Collection<Usuario> usuarios) {
-		usuarioRepository.saveAll(usuarios);
-	}
-
-	@Transactional
 	public Long create(Usuario usuario) {
+		usuario.setSenha(Hashing.sha256().hashString(usuario.getSenha(), StandardCharsets.UTF_8).toString());
 		return usuarioRepository.save(usuario).getId();
 	}
 

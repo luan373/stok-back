@@ -18,7 +18,7 @@ import com.google.common.base.Preconditions;
 
 import br.com.bg.stok.orm.model.Usuario;
 import br.com.bg.stok.orm.service.UsuarioService;
-import br.com.bg.stok.rest.exception.MyResourceNotFoundException;
+import br.com.bg.stok.rest.exception.NotFoundException;
 import br.com.bg.stok.rest.util.RestPreconditions;
 
 @RestController
@@ -34,14 +34,18 @@ public class UsuarioController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public Usuario findById(@PathVariable("id") Long id) throws MyResourceNotFoundException {
+	public Usuario findById(@PathVariable("id") Long id) throws NotFoundException {
 		return RestPreconditions.checkFound(usuarioService.findById(id));
 	}
 
 	@PostMapping("/porUsuarioSenha")
-	@ResponseStatus(HttpStatus.OK)
-	public Usuario porUsuarioSenha(@RequestBody Usuario resource) {
-		return usuarioService.porUsuarioSenha(resource);
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void porUsuarioSenha(@RequestBody Usuario resource) throws NotFoundException {
+		Usuario usuario = usuarioService.porUsuarioSenha(resource);
+
+		if (usuario == null) {
+			throw new NotFoundException();
+		}
 	}
 
 	@PostMapping
