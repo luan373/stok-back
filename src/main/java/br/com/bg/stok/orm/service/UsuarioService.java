@@ -52,5 +52,9 @@ public class UsuarioService {
 
 		return usuarioRepository.porUsuarioSenha(usuario.getUsuario(), usuario.getSenha());
 	}
+	
+	public void setUsuarioRepository(UsuarioRepository usuarioRepository) {
+		this.usuarioRepository = usuarioRepository;
+	}
 
 }
