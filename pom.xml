@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>		
+		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -65,13 +65,21 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		
-		<!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+
+		<!-- For Working with Json Web Tokens (JWT) -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
-			<version>0.9.1</version>
+			<version>0.9.0</version>
 		</dependency>
+
+		<!-- For Java 8 Date/Time Support -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<dependencyManagement>

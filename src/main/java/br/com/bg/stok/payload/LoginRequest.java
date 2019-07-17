@@ -1,8 +1,12 @@
-package br.com.bg.stok.orm.model;
+package br.com.bg.stok.payload;
 
-public class UserCredentials {
+import javax.validation.constraints.NotBlank;
 
+public class LoginRequest {
+	@NotBlank
 	private String username;
+
+	@NotBlank
 	private String password;
 
 	public String getUsername() {
@@ -20,5 +24,4 @@ public class UserCredentials {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 }
