@@ -52,7 +52,6 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
-
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -69,13 +68,11 @@ public class AuthController {
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-			return new ResponseEntity<Object>(new ApiResponse(false, "Username is already taken!"),
-					HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Object>(new ApiResponse(false, "Usuário já existe!"), HttpStatus.BAD_REQUEST);
 		}
 
 		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-			return new ResponseEntity<Object>(new ApiResponse(false, "Email Address already in use!"),
-					HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Object>(new ApiResponse(false, "E-mail já utilizado!"), HttpStatus.BAD_REQUEST);
 		}
 
 		// Creating user's account
@@ -85,7 +82,7 @@ public class AuthController {
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 		Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-				.orElseThrow(() -> new AppException("User Role not set."));
+				.orElseThrow(() -> new AppException("Não foi escolhido uma role para o usuário."));
 
 		user.setRoles(Collections.singleton(userRole));
 
@@ -94,6 +91,6 @@ public class AuthController {
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
 				.buildAndExpand(result.getUsername()).toUri();
 
-		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+		return ResponseEntity.created(location).body(new ApiResponse(true, "Usuário registrado com sucesso!"));
 	}
 }

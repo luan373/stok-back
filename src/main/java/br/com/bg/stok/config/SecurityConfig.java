@@ -16,7 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import br.com.bg.stok.secutiry.CustomUserDetailsService;
+import br.com.bg.stok.orm.service.CustomUserDetailsService;
 import br.com.bg.stok.secutiry.JwtAuthenticationEntryPoint;
 import br.com.bg.stok.secutiry.JwtAuthenticationFilter;
 

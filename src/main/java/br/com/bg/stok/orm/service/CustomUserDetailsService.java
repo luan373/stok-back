@@ -1,4 +1,4 @@
-package br.com.bg.stok.secutiry;
+package br.com.bg.stok.orm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.bg.stok.orm.model.User;
 import br.com.bg.stok.orm.repository.UserRepository;
+import br.com.bg.stok.secutiry.UserPrincipal;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
