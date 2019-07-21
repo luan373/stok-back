@@ -13,12 +13,17 @@ public class Cliente extends AuditModel {
 	private static final long serialVersionUID = -1989279167854870348L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nome;
+	
 	private String cpf;
+	
 	private String telefone;
+	
 	private String email;
+	
 	@OneToOne
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;

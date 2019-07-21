@@ -1,6 +1,8 @@
 package br.com.bg.stok.orm.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,12 +15,18 @@ public class Motoboy extends AuditModel {
 	private static final long serialVersionUID = -1989279167854870348L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String nome;
+	
 	private String placa;
+	
 	private String cpf;
+	
 	private String nrHabilitacao;
+	
+	@Enumerated(EnumType.STRING) 
 	private CategoriaMotoboy categoriaMotoboy;
 
 	public String getCpf() {
