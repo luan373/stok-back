@@ -51,9 +51,9 @@ public class MotoBoyController {
 		return service.save(resource);
 	}
 
-	@PutMapping(value = "/{id}")
+	@PutMapping()
 	@ResponseStatus(HttpStatus.OK)
-	public void update(@PathVariable("id") Long id, @RequestBody Motoboy resource) {
+	public void update(@RequestBody Motoboy resource) {
 		Preconditions.checkNotNull(resource);
 		service.save(resource);
 	}
