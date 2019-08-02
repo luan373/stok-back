@@ -25,11 +25,8 @@ public class Cidade extends AuditModel {
 	@JoinColumn(name = "idEstado", nullable = false)
 	private Estado estado;
 
-	@Column(length = 40, nullable = false)
+	@Column(length = 120, nullable = false)
 	private String nome;
-
-	@Column(length = 40, nullable = false)
-	private String codigo;
 
 	public Long getId() {
 		return id;
@@ -53,14 +50,6 @@ public class Cidade extends AuditModel {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 
 }

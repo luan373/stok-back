@@ -19,7 +19,7 @@ public class Estado extends AuditModel {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Long id;
 
-	@Column(length = 20, nullable = false)
+	@Column(length = 50, nullable = false)
 	private String nome;
 
 	@Column(length = 2, nullable = false)

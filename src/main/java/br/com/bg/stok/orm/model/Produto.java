@@ -16,9 +16,14 @@ public class Produto extends AuditModel {
 	@Column(name = "id")
 	private Long id;
 
+	@Column(nullable = false)
 	private String nome;
 
-	private Double preco;
+	@Column(nullable = false)
+	private Double precoCompra;
+
+	@Column(nullable = false)
+	private Double precoVenda;
 
 	public Long getId() {
 		return id;
@@ -36,12 +41,20 @@ public class Produto extends AuditModel {
 		this.nome = nome;
 	}
 
-	public Double getPreco() {
-		return preco;
+	public Double getPrecoCompra() {
+		return precoCompra;
 	}
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setPrecoCompra(Double precoCompra) {
+		this.precoCompra = precoCompra;
+	}
+
+	public Double getPrecoVenda() {
+		return precoVenda;
+	}
+
+	public void setPrecoVenda(Double precoVenda) {
+		this.precoVenda = precoVenda;
 	}
 
 }
