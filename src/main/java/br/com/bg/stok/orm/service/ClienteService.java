@@ -8,32 +8,30 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.bg.stok.orm.interfaces.IGenericService;
-import br.com.bg.stok.orm.model.Motoboy;
-import br.com.bg.stok.orm.repository.MotoBoyRepository;
+import br.com.bg.stok.orm.model.Cliente;
+import br.com.bg.stok.orm.repository.ClienteRepository;
 
 @Service
-public class MotoBoyService implements IGenericService<Motoboy> {
+public class ClienteService implements IGenericService<Cliente> {
 
 	@Autowired
-	private MotoBoyRepository repository;
+	private ClienteRepository repository;
 
 	@Transactional(readOnly = true)
-	public List<Motoboy> findAll() {
+	public List<Cliente> findAll() {
 		return repository.findAll();
 	}
 
-	public Motoboy save(Motoboy entity) {
-		entity.setCpf(entity.getCpf().replace(".", "").replace("-", ""));
-
+	public Cliente save(Cliente entity) {
 		return repository.save(entity);
 	}
 
 	@Transactional(readOnly = true)
-	public Optional<Motoboy> findById(long id) {
+	public Optional<Cliente> findById(long id) {
 		return repository.findById(id);
 	}
 
-	public void delete(Motoboy entity) {
+	public void delete(Cliente entity) {
 		repository.delete(entity);
 	}
 

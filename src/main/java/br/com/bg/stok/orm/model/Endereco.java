@@ -18,6 +18,10 @@ public class Endereco extends AuditModel {
 	private Long id;
 
 	@ManyToOne
+	@JoinColumn(name = "idCliente", nullable = false)
+	private Cliente cliente;
+
+	@ManyToOne
 	@JoinColumn(name = "idCidade", nullable = false)
 	private Cidade cidade;
 

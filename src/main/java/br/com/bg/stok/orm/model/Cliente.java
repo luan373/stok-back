@@ -1,9 +1,11 @@
 package br.com.bg.stok.orm.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Cliente extends AuditModel {
@@ -14,10 +16,13 @@ public class Cliente extends AuditModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull
 	private String nome;
 
+	@Column(unique = true, nullable = true)
 	private String cpf;
 
+	@Column(unique = true, nullable = false, length = 11)
 	private String telefone;
 
 	private String email;

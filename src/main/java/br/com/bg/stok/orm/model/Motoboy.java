@@ -1,5 +1,6 @@
 package br.com.bg.stok.orm.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,6 +23,7 @@ public class Motoboy extends AuditModel {
 	
 	private String placa;
 	
+	@Column(length = 11)
 	private String cpf;
 	
 	private String nrHabilitacao;
